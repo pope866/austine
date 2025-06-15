@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS_WRITER</title>
+    <link rel="icon" href="static/Images/PS_WRITER icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="Images/PS_WRITER icon.png" alt="PS_WRITER Logo"> <span>PS_WRITER</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><button id="dashboardButton">Dashboard</button></li>
+                    <li><button id="botEditorButton">Bot Editor</button></li>
+                    <li><button id="manualButton">Manual</button></li>
+                    <li><button id="strategyButton">Strategy</button></li>
+                    <li><button id="chartButton">Chart</button></li>
+                    <li><button id="ps5BotsButton">PS 5 BOTS</button></li>
+                    <li><button id="expertToolButton">Expert Tool</button></li>
+                    <li><button id="ldpToolsButton">LDP Tools</button></li>
+                    <li><button id="riskCalculatorButton" class="risk-calculator">Risk Calculator</button></li>
+                    <li><button id="copyTradingButton">Copy Trading</button></li>
+                </ul>
+            </nav>
+            <div class="auth">
+                <button class="log-in" id="loginButton">Log in</button>
+                <button class="sign-up" id="signupButton">Sign up</button>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <section class="load-build" id="loadBuildSection">
+                <h2>Load or build your bot</h2>
+                <div class="options" id="dynamicIcons">
+                    <div class="option my-computer">
+                        <a href="#" onclick="openFileManager()">
+                            <img src="Images/my computer.png" alt="My Computer Icon">
+                            <p>My computer</p>
+                        </a>
+                    </div>
+                    <div class="option sv5-bot">
+                        <a href="#" onclick="showPS5Bots()">
+                            <img src="Images/PS5 BOT.png" alt="SV 5 BOT Icon">
+                            <p>PS 5 BOT</p>
+                        </a>
+                    </div>
+                    <div class="option bot-builder">
+                        <a href="#" onclick="showBotEditor()">
+                            <img src="Images/Bot Builder Icon.png" alt="Bot Builder Icon">
+                            <p>Bot Builder</p>
+                        </a>
+                    </div>
+                    <div class="option quick-strategy">
+                        <a href="#" onclick="showStrategy()">
+                            <img src="Images/Quick Strategy Icon.png" alt="Quick Strategy Icon">
+                            <p>Quick strategy</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <div class="right-side-frame" id="manualContent">
+                <div>
+                    <div class="info-container">
+                        <h2>PS_WRITER User Manual</h2>
+                        <p>Welcome to the PS_WRITER User Manual. This guide will help you understand and use the platform effectively.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Getting Started</h3>
+                        <p>To start using PS_WRITER, you need to create an account and log in. Once logged in, you can access the dashboard and other features.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Bot Editor</h3>
+                        <p>The Bot Editor allows you to create and customize trading bots. You can define your own strategies and automate your trading process.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Strategy</h3>
+                        <p>The Strategy section provides access to various predefined trading strategies. You can select and implement these strategies in your trading bots.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Chart</h3>
+                        <p>The Chart feature enables you to analyze market trends and make informed trading decisions. You can view real-time charts and use various technical indicators.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side-frame" id="strategyContent">
+                <div>
+                    <h2>Trading Strategies</h2>
+                    <div class="strategy-frame">
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Even Strategy & Entry</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>When numbers (2, 4, 6, 8) indicate 11.5% and above, place an Even contract. Apply to all volatilities from Volatility 10 to Volatility 100.</td>
+                            </tr>
+                            <tr>
+                                <td>Main Volatility</td>
+                                <td>Volatility 100 index</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Point</td>
+                                <td>Wait until cursor hits odd numbers (1, 3, 5, 7, 9) at least 4–5 times. Then run bot when an even number is hit.</td>
+                            </tr>
+                        </table>
+
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Odd Strategy & Entry</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>When numbers (1, 3, 5, 7, 9) indicate 11% and above, place an Odd contract.</td>
+                            </tr>
+                            <tr>
+                                <td>Main Volatility</td>
+                                <td>Volatility 75 index</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Point</td>
+                                <td>Wait until cursor hits even numbers (0, 2, 4, 6, 8) 3–4 times. Then run bot when an odd number is hit.</td>
+                            </tr>
+                        </table>
+
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Over 0 & 1 Strategy</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>Use 1 tick. Green bar ≥ 10.5%. Red bar ≤ 9%.</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Point</td>
+                                <td>Cursor should hit 0 or 1 once or twice before entry.</td>
+                            </tr>
+                        </table>
+
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Over 2 Strategy</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>Any digit among 3–9 should show 10% or higher.</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Point</td>
+                                <td>After an "Under 2" trade, wait for cursor to hit 0–2, then trade Over.</td>
+                            </tr>
+                        </table>
+
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Digit Differs Strategy</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>Use 1 tick. Predict digit with < 9%. Green bar should be below 12%.</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Point</td>
+                                <td>Digit should appear at least once before entry.</td>
+                            </tr>
+                        </table>
+
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Rise Strategy</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>Use trendlines, moving averages, and volume to detect uptrend.</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Timing</td>
+                                <td>Enter on pullback near support.</td>
+                            </tr>
+                            <tr>
+                                <td>Risk Management</td>
+                                <td>Stop-loss just below support level.</td>
+                            </tr>
+                        </table>
+
+                        <table class="strategy-table">
+                            <tr>
+                                <th colspan="2">Fall Strategy</th>
+                            </tr>
+                            <tr>
+                                <td>Criteria</td>
+                                <td>Use trendlines and moving averages to detect downtrend.</td>
+                            </tr>
+                            <tr>
+                                <td>Entry Timing</td>
+                                <td>Enter on bounce near resistance.</td>
+                            </tr>
+                            <tr>
+                                <td>Risk Management</td>
+                                <td>Stop-loss above resistance level.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side-frame" id="chartContent">
+                <div>
+                    <div class="info-container">
+                        <h2>Chart Analysis</h2>
+                        <p>Analyze market trends and make informed trading decisions using real-time charts.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Technical Indicators</h3>
+                        <p>Use technical indicators such as moving averages, RSI, and MACD to analyze price movements.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Chart Patterns</h3>
+                        <p>Identify chart patterns such as head and shoulders, triangles, and flags to predict future price movements.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side-frame" id="expertToolContent">
+                <div>
+                    <div class="info-container">
+                        <h2>Expert Tools</h2>
+                        <p>Access advanced tools for in-depth market analysis and trading strategy development.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Custom Indicators</h3>
+                        <p>Create and use custom indicators to analyze market data according to your specific needs.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Backtesting</h3>
+                        <p>Test your trading strategies using historical data to evaluate their performance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side-frame" id="defaultContent">
+                <div>
+                    <div class="info-container">
+                        <h2>Welcome to <br> PS_WRITER Site</h2>
+                        <p>PS_WRITER empowers traders with advanced automation. Create bots, analyze charts, and implement strategies seamlessly.</p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>Quick Guide</h3>
+                        <p>
+                            <b>Getting Started:</b> Account setup & dashboard overview.<br>
+                            <b>Bot Editor:</b> Automate with custom trading bots.<br>
+                            <b>Strategy:</b> Explore & implement diverse strategies.<br>
+                            <b>Chart:</b> Analyze trends for informed decisions.<br>
+                            <b>Risk Calculator:</b> Calculate and manage trading risks.
+                        </p>
+                    </div>
+
+                    <div class="info-container">
+                        <h3>FAQs</h3>
+                        <p>
+                            <b>Q: Bot Creation?</b><br>
+                            A: Use the Bot Editor to define strategies.<br><br>
+                            <b>Q: Custom Strategies?</b><br>
+                            A: Yes, personalize your trading approach.<br><br>
+                            <b>Q: Performance Tracking?</b><br>
+                            A: Monitor via dashboard & chart tools.<br><br>
+                            <b>Q: User Manual?</b><br>
+                            A: Access from the "Manual" button.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side-frame" id="botEditorContent">
+                <div>
+                    <div class="info-container">
+                        <h2>Bot Editor</h2>
+                        <p>Create and customize your trading bots here. Define strategies, set parameters, and automate your trading process.</p>
+                    </div>
+                    <div class="info-container">
+                        <h3>Create a New Bot</h3>
+                        <p>Start from scratch or use a template to build a bot tailored to your trading goals.</p>
+                    </div>
+                    <div class="info-container">
+                        <h3>Edit Existing Bots</h3>
+                        <p>Modify your bots' strategies, parameters, or status to optimize performance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side-frame" id="ps5BotsContent">
+                <div>
+                    <h2>PS 5 Trading Bots</h2>
+                    <div class="bot-row">
+                        <button data-bot="PS_WRITER SV 7 2025">PS_WRITER SV 7 2025</button>
+                        <button data-bot="PS_WRITER SV6 BOT">PS_WRITER SV6 BOT</button>
+                    </div>
+                    <div class="bot-row">
+                        <button data-bot="PS_WRITER SV5 BOT ORIG">PS_WRITER SV5 BOT ORIG</button>
+                        <button data-bot="PS_WRITER SV4 SPEED BOT">PS_WRITER SV4 SPEED BOT</button>
+                    </div>
+                    <div class="bot-row">
+                        <button data-bot="PS_WRITER SV2">PS_WRITER SV2</button>
+                        <button data-bot="PS_WRITER SV1 2024">PS_WRITER SV1 2024</button>
+                    </div>
+                    <div class="bot-row">
+                        <button data-bot="PS_WRITER AUTO SWITCH EVEN ODD">PS_WRITER AUTO SWITCH EVEN ODD</button>
+                    </div>
+                </div>
+            </div>
+            <section class="load-build" id="chartContentMain">
+                <div class="tradingview-widget-container">
+                    <div id="tradingview_76d87"></div>
+                    <div class="tradingview-widget-copyright">
+                        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                            <span class="blue-text">Track all markets on TradingView</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="offline-message" id="offlineMessage">
+                    Unable to fetch live data. Please check your internet connection.
+                </div>
+            </section>
+            <div id="sv5BotContent">
+                <div class="blocks-menu">
+                    <select>
+                        <option>Blocks menu</option>
+                        <option>Variables</option>
+                        <option>Logic</option>
+                        <option>Loops</option>
+                        <option>Math</option>
+                    </select>
+                </div>
+                <div class="bot-interface">
+                    <div class="bot-interface-left">
+                        <div class="trade-params">
+                            <h3>1. Trade parameters</h3>
+                            <div class="param-group">
+                                <label>Market:</label>
+                                <select id="market">
+                                    <option>Derived</option>
+                                    <option>Forex</option>
+                                </select>
+                            </div>
+                            <div class="param-group">
+                                <label>Continuous Indices:</label>
+                                <select id="indices">
+                                    <option>Volatility 10 (1s) Index</option>
+                                    <option>Volatility 25 Index</option>
+                                    <option>Volatility 50 Index</option>
+                                </select>
+                            </div>
+                            <div class="param-group">
+                                <label>Trade Type:</label>
+                                <select id="tradeType">
+                                    <option>Digits</option>
+                                    <option>Call/Put</option>
+                                </select>
+                            </div>
+                            <div class="param-group">
+                                <label>Contract Type:</label>
+                                <select id="contractType">
+                                    <option>Under</option>
+                                    <option>Over</option>
+                                    <option>Matches</option>
+                                    <option>Differs</option>
+                                </select>
+                            </div>
+                            <div class="param-group">
+                                <label>Default Candle Interval:</label>
+                                <select id="candleInterval">
+                                    <option>1 minute</option>
+                                    <option>5 minutes</option>
+                                    <option>15 minutes</option>
+                                </select>
+                            </div>
+                            <div class="param-group">
+                                <label><input type="checkbox" id="restartBuySell"> Restart buy/sell on error (disable for better performance)</label>
+                            </div>
+                            <div class="param-group">
+                                <label><input type="checkbox" id="restartLast"> Restart last on error (ignore unsuccessful trade)</label>
+                            </div>
+                        </div>
+                        <div class="run-once">
+                            <h3>Run Once At Start</h3>
+                            <div class="param-group">
+                                <label>Prediction before loss</label>
+                                <select id="predBeforeLoss">
+                                    <option>9</option>
+                                    <option>8</option>
+                                    <option>7</option>
+                                    <option>6</option>
+                                    <option>5</option>
+                                </select>
+                                <span>to</span>
+                                <input type="number" id="predBeforeLossValue" value="9">
+                            </div>
+                            <div class="param-group">
+                                <label>Prediction after loss</label>
+                                <select id="predAfterLoss">
+                                    <option>6</option>
+                                    <option>5</option>
+                                    <option>4</option>
+                                    <option>3</option>
+                                    <option>2</option>
+                                </select>
+                                <span>to</span>
+                                <input type="number" id="predAfterLossValue" value="6">
+                            </div>
+                            <div class="param-group">
+                                <label>Entrypoint-Digit</label>
+                                <select id="entryPoint">
+                                    <option>7</option>
+                                    <option>6</option>
+                                    <option>5</option>
+                                    <option>4</option>
+                                    <option>3</option>
+                                </select>
+                                <span>to</span>
+                                <input type="number" id="entryPointValue" value="7">
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="tradingview-widget-container">
+                                <div id="sv5BotChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bot-interface-right">
+                        <div class="summary-tabs">
+                            <button class="tab active" data-tab="summary">Summary</button>
+                            <button class="tab" data-tab="transactions">Transactions</button>
+                            <button class="tab" data-tab="journal">Journal</button>
+                        </div>
+                        <div class="summary-content">
+                            <div id="summaryTab" class="tab-content">
+                                <p>When you're ready to trade, hit Run.<br>You'll be able to track your bot's performance here.</p>
+                                <p id="whatIsThis">What is this?</p>
+                                <div class="summary-stats">
+                                    <div>
+                                        <p>Total stake</p>
+                                        <p id="totalStake">0.00 AUD</p>
+                                    </div>
+                                    <div>
+                                        <p>Total payout</p>
+                                        <p id="totalPayout">0.00 AUD</p>
+                                    </div>
+                                    <div>
+                                        <p>No. of runs</p>
+                                        <p id="noOfRuns">0</p>
+                                    </div>
+                                </div>
+                                <div class="summary-stats">
+                                    <div>
+                                        <p>Contracts lost</p>
+                                        <p id="contractsLost">0</p>
+                                    </div>
+                                    <div>
+                                        <p>Contracts won</p>
+                                        <p id="contractsWon">0</p>
+                                    </div>
+                                    <div>
+                                        <p>Total profit/loss</p>
+                                        <p id="totalProfitLoss">0.00 AUD</p>
+                                    </div>
+                                </div>
+                                <div class="summary-actions">
+                                    <button id="runBotButton" class="run-button">Run</button>
+                                    <button id="resetStatsButton" class="reset-button">Reset</button>
+                                </div>
+                                <span id="botStatus" class="status-indicator">Bot is not running</span>
+                            </div>
+                            <div id="transactionsTab" class="tab-content" style="display: none;">
+                                <p>Transactions will be logged here.</p>
+                            </div>
+                            <div id="journalTab" class="tab-content" style="display: none;">
+                                <p>Journal entries will be logged here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <div class="logo-deriv">
+                    <img src="static/Images/deriv-logo.png" alt="Deriv Logo">
+                </div>
+                <h2>Welcome back</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Log in</button>
+                    </div>
+                </form>
+                <div class="social-login" id="loginSocialIcons">
+                </div>
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#" id="showSignupFromLogin">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="signupModal" class="modal">
+            <div class="modal-content">
+                <div class="logo-deriv">
+                    <img src="static/Images/deriv-logo.png" alt="Deriv Logo">
+                </div>
+                <h2>Create an account</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Sign up</button>
+                    </div>
+                </form>
+                <div class="social-login" id="signupSocialIcons">
+                </div>
+                <div class="login-link">
+                    <p>Already have an account? <a href="#" id="showLoginFromSignup">Log in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button class="theme-button" id="changeTheme">Change theme</button>
+        <div class="date-time" id="dateTime"></div>
+    </footer>
+
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="assets\script.js"></script>
+</body>
+</html>
